@@ -16,9 +16,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: "Insatll Yarn...."
+        run: npm install -g yarn
 
       - name: "Install dependencies...."
-        uses: "yarn install"
+        run: yarn install
 
       - name: "Run Unit Test...."
-        uses: "yarn test"
+        run: yarn test
