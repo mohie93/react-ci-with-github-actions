@@ -18,7 +18,7 @@ jobs:
           node-version: 12.x
 
       - name: "Install dependencies...."
-        uses: yarn install
+        uses: "yarn install"
 
       - name: "Run Unit Test...."
-        uses: yarn test
+        uses: "yarn test"
