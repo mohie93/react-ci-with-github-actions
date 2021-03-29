@@ -1,0 +1,26 @@
+name: CI for React APP
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout Latest Code ...."
+        uses: actions/checkout@v2
+
+      - name: "Setup NodeJs 12.x ...."
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: "Insatll Yarn...."
+        run: npm install -g yarn
+
+      - name: "Install dependencies...."
+        run: yarn install
+
+      - name: "Run Unit Test...."
+        run: yarn test
