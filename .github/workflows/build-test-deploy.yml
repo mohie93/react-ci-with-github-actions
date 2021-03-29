@@ -1,11 +1,11 @@
-name: CI for React APP
+name: Build Test & Deploy
 
 on:
-  pull_request:
+  push:
     branches: [main]
 
 jobs:
-  build-and-test:
+  build-test-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
