@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Branch name
+        run: echo running on branch ${GITHUB_REF##*/}
+
       - name: "Checkout Latest Code ...."
         uses: actions/checkout@v2
 
@@ -29,7 +32,7 @@ jobs:
       - name: "Create .env file...."
         run: |
           echo '
-            REACT_APP_BRANCH_NAME= $GITHUB_BRANCH
+            REACT_APP_BRANCH_NAME= ${GITHUB_REF##*/}
           ' >> ./.env
 
       - name: "Insatll Yarn...."
