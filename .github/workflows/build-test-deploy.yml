@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Branch name
-        run: echo running on branch ${GITHUB_REF##*/}
+        run: echo running on branch ${github.head_ref}
 
       - name: "Checkout Latest Code ...."
         uses: actions/checkout@v2
@@ -32,7 +32,7 @@ jobs:
       - name: "Create .env file...."
         run: |
           echo '
-            REACT_APP_BRANCH_NAME= ${GITHUB_REF#refs/heads/}
+            REACT_APP_BRANCH_NAME= ${github.head_ref}
           ' >> ./.env
 
       - name: "Insatll Yarn...."
