@@ -32,7 +32,7 @@ jobs:
       - name: "Create .env file...."
         run: |
           echo '
-            REACT_APP_BRANCH_NAME= ${GITHUB_REF##*/}
+            REACT_APP_BRANCH_NAME= ${GITHUB_REF#refs/heads/}
           ' >> ./.env
 
       - name: "Insatll Yarn...."
@@ -50,5 +50,5 @@ jobs:
       - name: "AWS S3 Sync To APP Bucket...."
         run: aws s3 sync ./build s3://${{secrets.BUCKET_NAME}} --acl public-read
 
-      - name: "AWS S3 Sync To APP Bucket...."
+      - name: "AWS Cloud Front Create new invalidation...."
         run: aws cloudfront create-invalidation --distribution-id ${{secrets.DISTRIBUTION_ID}} --paths "/*"
