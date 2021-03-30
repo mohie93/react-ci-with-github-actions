@@ -46,3 +46,6 @@ jobs:
 
       - name: "AWS S3 Sync To APP Bucket...."
         run: aws s3 sync ./build s3://${{secrets.BUCKET_NAME}} --acl public-read
+
+      - name: "AWS S3 Sync To APP Bucket...."
+        run: aws cloudfront create-invalidation --distribution-id ${{secrets.DISTRIBUTION_ID}} --paths "/*"
