@@ -1,8 +1,11 @@
-name: CI for React APP
+name: Build & Test Flow
 
 on:
-  pull_request:
-    branches: [main]
+  push:
+    branches:
+      - "**"
+      - "!main"
+      - "!staging"
 
 jobs:
   build-and-test:
@@ -20,7 +23,13 @@ jobs:
         run: npm install -g yarn
 
       - name: "Install dependencies...."
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: "Run Unit Test...."
         run: yarn test
+
+      - name: "Create .env file...."
+        run: |
+          echo '
+            REACT_APP_BRANCH_NAME= $GITHUB_REPOSITORY
+          ' >> ./.env
