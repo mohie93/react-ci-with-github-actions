@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <a className="App-link" href="https://supahands.ai/careers" target="_blank" rel="noopener noreferrer">
-          Hello From Supahands, Updated
+          Hello From Supahands, Updated, Demo TGIF
         </a>
         <p>Branch is : {branchName}</p>
       </header>
