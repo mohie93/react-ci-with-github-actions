@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Get branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: get_branch_name
+
       - name: "Checkout Latest Code ...."
         uses: actions/checkout@v2
 
@@ -31,5 +36,5 @@ jobs:
       - name: "Create .env file...."
         run: |
           echo '
-            REACT_APP_BRANCH_NAME= $GITHUB_REPOSITORY
+            REACT_APP_BRANCH_NAME= ${{ steps.get_branch_name.outputs.branch }}
           ' >> ./.env
